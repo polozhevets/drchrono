@@ -1,0 +1,7 @@
+motor
+pymongo
+aiohttp
+envparse
+asyncio
+aiohttp_jinja2
+jinja2

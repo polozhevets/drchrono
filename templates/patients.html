@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+	Patients
+{% endblock %}
+
+{% block container %}
+  <div class="row">
+        <div class="col-sm-10">
+            <h2>Patients List</h2>
+            <p>Basic info for all patients:</p>
+        </div>
+        <div class="col-sm-2">
+            <a href=""></a>
+            <h2><a class="btn-lg btn-success" href="/update/">Update</a></h2>
+        </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Birthday</th>
+        <th>Home Phone</th>
+        <th>Cell Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for patient in patients %}
+      <tr>
+        <td>{{ patient.first_name }}</td>
+        <td>{{ patient.last_name }}</td>
+        <td>{{ patient.date_of_birth }}</td>
+        <td>{{ patient.home_phone }}</td>
+        <td>{{ patient.cell_phone }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
