@@ -4,12 +4,12 @@ For creating the app I used aiohttp -
  asynchronous web framework, written by Python Core developers.
 
 Also I used Mongodb with motor(asyncronous driver) as database,
-envparse for working with secure environment variables
+envparse for working with secure environment variables, jinja2 for templates
 
 For beginning you need *Python 3.6* or above and install requirements to virtualenv
 
 ```bash
-virtualenv --python=python3.7 env
+virtualenv --python=python3.6 env
 source env/bin/activate
 pip install -r requirements.txt
 ```
@@ -20,11 +20,16 @@ Short sample *defaults.env* file
 
 ```python
 DEBUG=True
-MONGO_HOST='127.0.0.1'
+MONGO_HOST='localhost'
 MONGO_DB_NAME='drchrono'
-SECRET_KEY='some secure key'
+SECRET_KEY='your_key_for_sessions'
 HOST='0.0.0.0'
 PORT=3000
+USER_COLLECTION='users'
+CLIENT_ID='drchrono_client_id'
+CLIENT_SECRET='drchrono_client_secret'
+REDIRECT_URI='http://host.net/callback/'
+BASE_URL='https://drchrono.com'
 ```
 
 MongoDB with auth: *'mongodb://user:pass@mongo_host:mongo_port/mongo_database'*
