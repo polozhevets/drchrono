@@ -23,6 +23,8 @@ class Patient(object):
             await self.collection.create_index([("sha1", 1)], unique=True)
             data = await get_patients(access_token)
             logging.info('Updating patients list...')
+            if not data:
+                return None
             for element in data:
                 sha1 = _hash_from_dict(element)
                 element['sha1'] = sha1  # Good to compare
@@ -34,5 +36,4 @@ class Patient(object):
                         await self.collection.replace_one({'id': element['id']}, element, True)
         if update:
             await asyncio.sleep(60 * 60 / 500)
-            return data
         return data

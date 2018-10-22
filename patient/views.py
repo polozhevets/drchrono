@@ -58,7 +58,9 @@ async def html_patients(request):
 @aiohttp_jinja2.template('patients.html')
 async def update_patients(request):
     patient = Patient(request.app.db)
-    await patient.query(access_token, update=True)
+    result = await patient.query(access_token, update=True)
+    if not result:
+        raise web.HTTPFound('/auth/')
     raise web.HTTPFound('/patients/')
 
 
